@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    
+    //Declaring Variables
     TextView highScoreTextView;
     TextView newHighTextView;
     int highScore;
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        //Initialising Variables
 
         SharedPreferences prefs = this.getPreferences(Context.MODE_PRIVATE);
         highScore = prefs.getInt("highScore", 0);
@@ -30,10 +34,14 @@ public class MainActivity extends AppCompatActivity {
         highScoreTextView = (TextView) findViewById(R.id.highScoreTextView);
         newHighTextView = (TextView) findViewById(R.id.newHighTextView);
         newHighTextView.setText("");
+        
+        //Used Intent
 
 
         Intent intent = getIntent();
         int score = intent.getIntExtra("score", 0);
+        
+        //Condition
 
         if(score > highScore){
             highScore = score;
@@ -49,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void start(View view) {
-
+        
+        //TimerActivity.Class Start,Using Intent
         Intent intent = new Intent(this, TimerActivity.class);
         startActivity(intent);
     }
